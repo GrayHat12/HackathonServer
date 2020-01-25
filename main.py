@@ -4,6 +4,8 @@ from selenium.webdriver.firefox.options import Options
 import time
 import requests
 import json
+import os
+import threading
 
 options = Options()
 options.headless = True
@@ -272,7 +274,7 @@ def getPlaces(snt=[]):
 def repeat():
     while True:
         time.sleep(180)
-        print(requests.get('https://gray-server.herokuapp.com/').text)##
+        print(requests.get('https://gackathon.herokuapp.com/').text)##
         
 
 app = Flask(__name__) 
@@ -290,14 +292,14 @@ def retflight(name):
    year = req_data['year']
    return flights(src,dest,month,year,day)
 
-@app.route('/suggest',methods=['POST']) 
-def retflight(name): 
+@app.route('/suggestion',methods=['POST']) 
+def suggestion(name): 
    req_data = request.get_json()
    src = req_data['city_name']
    return suggest_places(src)
 
 @app.route('/hotels',methods=['POST']) 
-def retflight(name): 
+def get_hot(name): 
    req_data = request.get_json()
    rooms = req_data['rooms']
    name = req_data['name']
@@ -310,7 +312,7 @@ def retflight(name):
    return hotels(rooms,name,inmonth,inyear,inday,outmonth,outyear,outday)
 
 @app.route('/city',methods=['POST']) 
-def retflight(name): 
+def get_city(name): 
    req_data = request.get_json()
    src = req_data['data']
    return getPlaces(src)
