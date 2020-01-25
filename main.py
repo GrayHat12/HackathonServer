@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 import requests
-import json5.tool
+import json
 
 options = Options()
 options.headless(True)
