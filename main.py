@@ -6,7 +6,7 @@ import requests
 import json
 
 options = Options()
-options.headless(True)
+options.headless = True
 
 def flights(infrom="Delhi",into="Goa",trgetmonth="february",trgetyear="2020",trgetdate="12"):
     #driver = webdriver.Chrome(executable_path=r"C:\Users\Rahul\PaidProjects\ShardaHackathon\chromedriver.exe")
