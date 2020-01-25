@@ -283,7 +283,7 @@ def hello_world():
 	return 'Sharda Hackathon'
 
 @app.route('/flights',methods=['POST']) 
-def retflight(name): 
+def retflight(): 
    req_data = request.get_json()
    src = req_data['src']
    dest = req_data['dest']
@@ -293,13 +293,13 @@ def retflight(name):
    return flights(src,dest,month,year,day)
 
 @app.route('/suggestion',methods=['POST']) 
-def suggestion(name): 
+def suggestion(): 
    req_data = request.get_json()
    src = req_data['city_name']
    return suggest_places(src)
 
 @app.route('/hotels',methods=['POST']) 
-def get_hot(name): 
+def get_hot(): 
    req_data = request.get_json()
    rooms = req_data['rooms']
    name = req_data['name']
@@ -312,7 +312,7 @@ def get_hot(name):
    return hotels(rooms,name,inmonth,inyear,inday,outmonth,outyear,outday)
 
 @app.route('/city',methods=['POST']) 
-def get_city(name): 
+def get_city(): 
    req_data = request.get_json()
    src = req_data['data']
    return getPlaces(src)
