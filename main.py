@@ -1,18 +1,21 @@
 from flask import Flask , request
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver import ChromeOptions
 import time
 import requests
 import json
 import os
 import threading
 
-options = Options()
+
+options = ChromeOptions()
 options.headless = True
+options.binary_location = "/app/.apt/usr/bin/google-chrome-stable"
 
 def flights(infrom="Delhi",into="Goa",trgetmonth="february",trgetyear="2020",trgetdate="12"):
     #driver = webdriver.Chrome(executable_path=r"C:\Users\Rahul\PaidProjects\ShardaHackathon\chromedriver.exe")
-    driver = webdriver.Firefox(options=options)
+    #driver = webdriver.Firefox(options=options)
+    driver = webdriver.Chrome(chrome_options=options)
     defdatedata = ["january","february","march","april","may","june","july","august","september","october","november","december"]
     driver.get('https://www.goibibo.com/flights/')
     
@@ -122,7 +125,8 @@ def suggest_places(city="New Delhi"):
 
 def hotels(rooms='1',name="Delhi",trgetmonth="february",trgetyear="2020",trgetdate="12",retmonth="february",retyear="2020",retdate="14"):
     #driver = webdriver.Chrome(executable_path=r"C:\Users\Rahul\PaidProjects\ShardaHackathon\chromedriver.exe")
-    driver = webdriver.Firefox(options=options)
+    #driver = webdriver.Firefox(options=options)
+    driver = webdriver.Chrome(chrome_options=options)
     defdatedata = ["january","february","march","april","may","june","july","august","september","october","november","december"]
     driver.get('https://www.goibibo.com/hotels/')
     if len(trgetdate)==1:
